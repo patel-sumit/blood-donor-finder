@@ -1,3 +1,10 @@
+**Blood Donor Finder**
+
+This project is developed in angular js
+I this app user can find blood donor of particular blood group
+Also find details of blood donor like address,phone number ,geo location etc.
+
+
 ## Prerequisites
 
 ### [Node.js](https://nodejs.org)
