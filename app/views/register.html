@@ -1,0 +1,103 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <div id="page-wrapper"   ui-view class="static-content-wrapper">
+            <div id="signupbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign Up</div>
+                        <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" ui-sref="login">Sign In</a></div>
+                    </div>
+                    <div class="panel-body">
+
+                        <form id="signupform" name="signupform" class="form-horizontal" role="form" novalidate ng-submit="vm.register()" >
+
+                            <div id="signupalert"  class="alert alert-danger" ng-if="errorMessage">
+                                <p>Error:{{errorMessage}}</p>
+                                <span></span>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': signupform.name.$dirty &&  signupform.name.$error.required}">
+                                <label for="name" class="col-md-3 control-label">Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" ng-model="vm.name"  autofocus required aria-label="name">
+                                    <small class="help-block" data-bv-validator="notEmpty" data-bv-for="name" data-bv-result="INVALID" style="" ng-show="signupform.name.$dirty &&  signupform.name.$error.required">Name is required</small>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': (signupform.email.$dirty &&  signupform.email.$error.required) || (signupform.email.$error.email)}">
+                                <label for="email" class="col-md-3 control-label">Email</label>
+                                <div class="col-md-9">
+                                    <input   type="email" class="form-control" name="email" placeholder="name@example.com" id="email" autocomplete="email"  ng-model="vm.email" required aria-label="email">
+                                    <small class="help-block" data-bv-validator="notEmpty" data-bv-for="email" data-bv-result="INVALID" style="" ng-show="signupform.email.$dirty &&  signupform.email.$error.required">The Email is required</small>
+                                    <small class="help-block" data-bv-validator="notEmpty" data-bv-for="email" data-bv-result="INVALID" style="" ng-show="signupform.email.$dirty &&  signupform.email.$error.email">The specified email is not valid.</small>                    </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': (signupform.password.$dirty &&  signupform.password.$error.required)||(!signupform.password.$error.required && signupform.password.$error.minlength)||(!signupform.password.$error.required &&!signupform.password.$error.minlength&& signupform.password.$error.pattern && signupform.password.$dirty)}">
+                                <label for="pwd" class="col-md-3 control-label">Password</label>
+                                <div class="col-md-9">
+                                    <input type="password" class="form-control" name="password" placeholder="Password" id="pwd"  ng-model="vm.password" ng-minlength="8"  ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required aria-label="password">
+                                    <small class="help-block" data-bv-validator="callback" data-bv-for="password" data-bv-result="NOT_VALIDATED"  ng-show="signupform.password.$dirty &&  signupform.password.$error.required">The password is required</small>
+                                    <small class="help-block" data-bv-validator="callback" data-bv-for="password" data-bv-result="NOT_VALIDATED" ng-show="!signupform.password.$error.required && signupform.password.$error.minlength">The password must be at least 8 characters long</small>
+                                    <small class="help-block" data-bv-validator="callback" data-bv-for="password" data-bv-result="NOT_VALIDATED" ng-show="!signupform.password.$error.required &&!signupform.password.$error.minlength&& signupform.password.$error.pattern && signupform.password.$dirty">Must contain at least one lower &amp; uppercase letter and one non-alpha character</small>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': (signupform.confirmPassword.$dirty &&  signupform.confirmPassword.$error.required)||signupform.confirmPassword.$error.unique}">
+                                <label for="rpwd" class="col-md-3 control-label">Confirm Password</label>
+                                <div class="col-md-9">
+                                    <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" id="rpwd"  ng-model="vm.confirmPassword" required pw-check='vm.password' aria-label="confirm password">
+                                    <small class="help-block" data-bv-validator="notEmpty" data-bv-for="confirmPassword" data-bv-result="NOT_VALIDATED"  ng-show="signupform.confirmPassword.$dirty &&  signupform.confirmPassword.$error.required">The confirm password is required and cannot be empty</small>
+                                    <small class="help-block" data-bv-validator="identical" data-bv-for="confirmPassword" data-bv-result="INVALID" ng-show='signupform.confirmPassword.$error.unique'>The password and its confirm must be the same</small>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': (signupform.phone.$dirty &&  signupform.phone.$error.required)||(!signupform.phone.$error.required && (signupform.phone.$error.minlength || signupform.phone.$error.maxlength))}">
+                                <label for="phone" class="col-md-3 control-label">Phone Number</label>
+                                <div class="col-md-9">
+                                    <input type="number"  id="phone"  class="form-control"  ng-minlength="10" ng-maxlength="10"  name="phone" placeholder="Phone"  ng-model="vm.phone"  ng-required="true" required aria-label="phone number">
+                                    <small class="help-block" data-bv-validator="callback" data-bv-for="phone" data-bv-result="NOT_VALIDATED" ng-show="signupform.phone.$dirty &&  signupform.phone.$error.required">Valid phone number is required</small>
+                                    <small class="help-block" data-bv-validator="callback" data-bv-for="phone" data-bv-result="NOT_VALIDATED" ng-show="!signupform.phone.$error.required && (signupform.phone.$error.minlength || signupform.phone.$error.maxlength)">phone number should be 10 digits</small>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': signupform.address.$dirty &&  signupform.address.$error.required}">
+                                <label for="address" class="col-md-3 control-label">Address</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" name="address" id="address" placeholder="Address" ng-model="vm.address"  required aria-label="address"></textarea>
+                                    <small class="help-block" data-bv-validator="callback" data-bv-for="address" data-bv-result="NOT_VALIDATED" ng-show="signupform.address.$dirty &&  signupform.address.$error.required">Address is required</small>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bdate" class="col-md-3 control-label">Birth date</label>
+                                <div class="col-md-9">
+                                    <input type="date" name="bdate" class="form-control datepicker" id="bdate" placeholder="Birth date" ng-model="vm.bdate" aria-label="birth date">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': signupform.bloodgroup.$dirty &&  signupform.bloodgroup.$error.required}">
+                                <label for="bloodgroup" class="col-md-3 control-label">Blood Group</label>
+                                <div class="col-md-9">
+                                    <select name="bloodgroup" id="bloodgroup" class="form-control" ng-model="vm.bloodgroup" required aria-label="blood group">
+                                        <option value="">Select blood group</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                    <small class="help-block" data-bv-validator="callback" data-bv-for="bloodgroup" data-bv-result="NOT_VALIDATED" ng-show="signupform.bloodgroup.$dirty &&  signupform.bloodgroup.$error.required">Blood group is required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <!-- Button -->
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button id="btn-signup" type="submit" class="btn btn-info" ng-disabled="signupform.$invalid" ><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

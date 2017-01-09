@@ -1,0 +1,40 @@
+<div class="container" id="container-review-list" >
+    <ul class="article-li" ng-repeat="user in vm.Users">
+
+        <li class="col-md-3 col-sm-6" ><article class="post-item" >
+            <div>
+                <time ><b>Name : </b>{{user.name}}</time>
+                <!--<span>
+                        <a href="/tag/freebie/" class="tagged tag-freebie">Freebie</a>
+                    </span>-->
+            </div>
+            <div>
+                <time ><b>Phone : </b>{{user.phone}} </time>
+                <!--<span>
+                        <a href="/tag/freebie/" class="tagged tag-freebie">Freebie</a>
+                    </span>-->
+            </div>
+            <div>
+                <time ><b>Blood Group : </b>{{user.bloodgroup}} </time>
+                <!--<span>
+                        <a href="/tag/freebie/" class="tagged tag-freebie">Freebie</a>
+                    </span>-->
+            </div>
+            <p><b>Address : </b>{{user.address}}</p>
+
+            <a title="geolocation" class="button red  small" ng-click="vm.pinClicked(user,vm.map)" role="button"> <i class="fa fa-map-marker fa-lg"></i></a>
+
+        </article></li>
+
+    </ul>
+</div>
+<ng-map zoom-to-include-markers="true" zoom="4" center="20.5937, 78.9629" class="map" id="map">
+    <marker ng-repeat="user in vm.Users" position="{{user.latt}},{{user.longi}}" id="{{user.id}}"  on-click="vm.pinClicked(this)"></marker>
+</ng-map>
+
+
+
+
+
+
+

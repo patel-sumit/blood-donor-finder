@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title >blood donor finder</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:csslib -->
+    <link rel="stylesheet" href="lib/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/styles/font-awesome.min.css">
+    <!-- endbuild -->
+
+    <!-- build:css -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <body ng-app="bloodDonorFinderApp" ng-controller="MainCtrl as main" data-ng-init="init(map)">
+  <nav class="navbar navbar-default " ng-controller="MenuCtrl">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand nav-header  head-title" ui-sref="home" > Blood donor finder</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse " >
+        <ul id="top-menu" class="nav navbar-nav navbar-right">
+          <li  ng-class="navClass('login')"  id="liLogin" ui-sref="login" ng-show="!main.currentUser" class="service-title " ><a >login</a></li>
+          <li id="liSignUp" ui-sref="register"   ng-class="navClass('register')" ng-show="!main.currentUser" class="service-title"><a >sign up</a></li>
+          <li  ng-class="navClass('home')"  id="liHome" ui-sref="home" ng-show="main.currentUser" class="service-title" ><a >Home</a></li>
+          <li class="dropdown navsignup service-title" id="liSignOut"   ng-class="navClass('home')" ng-show="main.currentUser!=null">
+            <a class="dropdown-toggle service-title" data-toggle="dropdown" href="" id="userNameHeader">&nbsp;&nbsp;{{main.currentUser.username}}&nbsp;&nbsp;<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="" ng-click="main.logout()">Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <div class="container" ui-view >
+  </div>
+
+  <!-- build:jslib -->
+    <script src="lib/scripts/1.jquery.min.js"></script>
+    <script src="lib/scripts/3.floatingLabel.min.js"></script>
+    <script src="lib/scripts/1.angular.min.js"></script>
+    <script src="lib/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/scripts/4.bootstrapValidator.min.js"> </script>
+    <script src="lib/scripts/2.angular-ui-router.js"></script>
+    <script src="lib/scripts/3.angular-storage.js"></script>
+    <script src="lib/scripts/idbp.js"></script>
+    <script src="lib/scripts/firebase.js"></script>
+    <script src="lib/scripts/google-map-api.js"></script>
+    <script src="lib/scripts/ng-map.min.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js -->
+  <script src="scripts/app.js"></script>
+    <script src="scripts/services/user.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/controllers/home.js"></script>
+    <script src="scripts/controllers/bloodgroup.js"></script>
+    <script src="scripts/controllers/persons.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/newperson.js"></script>
+    <script src="scripts/directives/pwCheck.js"></script>
+    <script src="scripts/directives/autofocus.js"></script>
+  <!-- endbuild -->
+
+  <script src="indexController.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAEb82ZRQug7T5WvAtv99YdqQJcNE7uAO4",
+        authDomain: "blood-donar-5ec34.firebaseapp.com",
+        databaseURL: "https://blood-donar-5ec34.firebaseio.com",
+        storageBucket: "blood-donar-5ec34.appspot.com",
+        messagingSenderId: "40131993449"
+      };
+      firebase.initializeApp(config);
+    </script>
+</body>
+</html>

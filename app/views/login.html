@@ -1,0 +1,57 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <div id="page-wrapper"   ui-view class="static-content-wrapper">
+            <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" ng-submit="vm.login()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                    </div>
+
+                    <div class="panel-body ">
+                        <div  id="login-alert" name="login-alert" class="alert alert-danger col-sm-12" ng-if="errorMessage">{{errorMessage}}</div>
+                        <form id="loginform" name="loginform" class="form-horizontal" role="form" novalidate  >
+                            <div class="form-group" style="margin-bottom:20px" ng-class="{'has-error': loginform.username.$dirty &&  loginform.username.$error.required}">
+                                <label class="control-label"  for="login-username" ></label>
+                                <div class="input-group input-box  bs-float-label" >
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="login-username" type="text" class="form-control float-input" name="username" placeholder=" name@example.com" autocomplete="on" autofocus required ng-model="vm.username"  aria-label="username">
+                                    <label for="login-username" class="float-label">name@example.com</label>
+                                </div>
+                                <small class="help-block" data-bv-validator="notEmpty" data-bv-for="username" data-bv-result="INVALID" style="" ng-show="loginform.username.$dirty &&  loginform.username.$error.required">The User Name is required</small>
+                            </div>
+                            <div class="form-group"  ng-class="{'has-error': loginform.password.$dirty &&  loginform.password.$error.required}">
+                                <label class="col-md-3 control-label" for="login-password"></label>
+                                <div class="input-group input-box  bs-float-label">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input id="login-password" type="password" class="form-control float-input" name="password" placeholder="password" required ng-model="vm.password" aria-label="password" >
+                                    <label for="login-password" class="float-label">password</label>
+                                </div>
+                                <small class="help-block" data-bv-validator="notEmpty" data-bv-for="password" data-bv-result="INVALID" style="" ng-show="loginform.password.$dirty &&  loginform.password.$error.required">Password is required</small>
+                            </div>
+                            <div class="form-group btnLogin-Group">
+                                <!-- Button -->
+
+                                <div class="col-sm-12 controls">
+                                    <button id="btn-login" type="submit" class="btn  btn-success" style="margin-left:20px;" ng-disabled="loginform.$invalid"><i class="icon-hand-right"></i> &nbsp Login</button>
+                                    <!--<a id="btn-login" href="#" class="btn btn-success" style="margin-left: 18px;"  type="submit">Login  </a>-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                        Don't have an account!
+                                        <a ui-sref="register" >
+                                            Sign Up Here
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

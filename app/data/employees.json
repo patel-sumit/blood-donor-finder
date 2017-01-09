@@ -1,0 +1,33 @@
+
+ [
+{
+  "city" : "Toronto",
+  "lat" : 43.7000,
+  "long" : -79.4000,
+  "employees": 194
+},
+{
+  "city" : "New York",
+  "lat" : 40.6700,
+  "long" : -73.9400,
+  "employees": 400
+},
+{
+  "city" : "Chicago",
+  "lat" : 41.8819,
+  "long" : -87.6278,
+  "employees": 230
+},
+{
+  "city" : "Los Angeles",
+  "lat" : 34.0500,
+  "long" : -118.2500,
+  "employees": 150
+},
+{
+  "city" : "Las Vegas",
+  "lat" : 36.0800,
+  "long" : -115.1522,
+  "employees": 380
+}
+]
