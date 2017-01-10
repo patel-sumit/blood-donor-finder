@@ -51,12 +51,12 @@ angular.module('bloodDonorFinderApp')
 
         };
         service.Authenticate=function(user) {
-            return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
+            /*return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));*/
             var email = user.username;
             var password = user.password;
             var loginalert = user.loginAlert;
 
-           /* return  firebase.auth().signInWithEmailAndPassword(
+            return  firebase.auth().signInWithEmailAndPassword(
                 email,
                 password).then(
                 function (authData) {
@@ -86,10 +86,10 @@ angular.module('bloodDonorFinderApp')
                         loginErrMsg = error.code;
                 }
                 return loginErrMsg;
-                /!*loginalert.style.display = "";
-                 loginalert.innerText = error.message;*!/
+                /*loginalert.style.display = "";
+                 loginalert.innerText = error.message;*/
                 //console.log("Login Failed!", error);
-            });*/
+            });
         };
         service.Create =function(user) {
            /* return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));*/
@@ -208,16 +208,5 @@ angular.module('bloodDonorFinderApp')
             store.set('latt', location.latt);
             store.set('longi', location.longi);
 
-        }
-        // private functions
-
-        service.handleSuccess=function(res) {
-            return res.data;
-        }
-
-        service.handleError=function(error) {
-            return function () {
-                return { success: false, message: error };
-            };
         }
 }]);

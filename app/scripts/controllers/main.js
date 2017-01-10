@@ -16,7 +16,7 @@ angular.module('bloodDonorFinderApp')
                 $scope.position.longi=pos.coords.longitude;
                 },
                 function(error) {
-                    alert('Unable to get location: ' + error.message);
+                    /*alert('Unable to get location: ' + error.message);*/
                 }, options);
 
             $rootScope.online = navigator.onLine;

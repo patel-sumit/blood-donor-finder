@@ -1,7 +1,7 @@
 /**
  * Created by Sumit Patel on 06/01/2017.
  */
-var staticCacheName = 'blooddonor-static-v2';
+var staticCacheName = 'blooddonor-static-v1';
 
 self.addEventListener('install', function (event) {
     console.log("install a fetch !");
@@ -9,53 +9,10 @@ self.addEventListener('install', function (event) {
         caches.open(staticCacheName).then(function (cache) {
             return cache.addAll([
                 '/',
-                /*'./lib/scripts/1.angular.min.js',
-                './lib/scripts/1.jquery.min.js',
-                './lib/scripts/2.angular-ui-router.js',
-
-                './lib/scripts/3.angular-storage.js',
-                './lib/scripts/3.floatingLabel.min.js',
-                './lib/scripts/4.bootstrapValidator.min.js',
-                './lib/scripts/bootstrap.min.js',
-                './lib/scripts/firebase.js',
-                './lib/scripts/google-map-api.js',*/
-                './lib/scripts/app_lib.js',
-
-
-                './lib/fonts/FontAwesome.otf',
-                './lib/fonts/fontawesome-webfont.eot',
-                './lib/fonts/fontawesome-webfont.svg',
-                './lib/fonts/fontawesome-webfont.ttf',
-                './lib/fonts/fontawesome-webfont.woff',
-                './lib/fonts/fontawesome-webfont.woff2',
-
-
-                /*'./lib/styles/bootstrap.min.css',
-                './lib/styles/font-awesome.css',
-                './lib/styles/font-awesome.min.css',*/
                 './lib/styles/app_lib.css',
-                './lib/styles/glyphicons-halflings-regular.ttf',
-                './lib/styles/glyphicons-halflings-regular.woff',
+                './styles/app.css',
 
-
-
-
-
-               /* './scripts/controllers/bloodgroup.js',
-                './scripts/controllers/data.js',
-                './scripts/controllers/home.js',
-                './scripts/controllers/login.js',
-                './scripts/controllers/main.js',
-                './scripts/controllers/menu.js',
-                './scripts/controllers/newperson.js',
-                './scripts/controllers/persons.js',
-                './scripts/controllers/register.js',
-
-                './scripts/directives/pwCheck.js',
-
-                './scripts/services/authentication.js',
-                './scripts/services/login.js',
-                './scripts/services/user.local-storage.js',*/
+                './lib/scripts/app_lib.js',
                 './scripts/app.js',
 
                 './views/bloodgroup.html',
@@ -65,9 +22,19 @@ self.addEventListener('install', function (event) {
                 './views/persons.html',
                 './views/register.html',
 
-                /*'./styles/main.css',
-                './styles/style.css',*/
-                './styles/app.css'
+                './lib/fonts/FontAwesome.otf',
+                './lib/fonts/fontawesome-webfont.eot',
+                './lib/fonts/fontawesome-webfont.svg',
+                './lib/fonts/fontawesome-webfont.ttf',
+                './lib/fonts/fontawesome-webfont.woff',
+                './lib/fonts/fontawesome-webfont.woff2',
+                './lib/fonts/glyphicons-halflings-regular.ttf',
+                './lib/fonts/glyphicons-halflings-regular.woff',
+                './lib/fonts/glyphicons-halflings-regular.woff2',
+
+                './images/launcher-icon-1x.jpg',
+                './images/launcher-icon-2x.jpg',
+                './images/launcher-icon-3x.jpg'
 
 
             ]);

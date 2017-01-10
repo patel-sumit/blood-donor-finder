@@ -4,7 +4,7 @@
 angular.module('bloodDonorFinderApp')
     .controller('NewPersonCtrl', ['UserService','$scope','$filter','$state',function (UserService,$scope,$filter,$state) {
         var vm = this;
-       /* vm.nePerson = nePerson;*/
+        vm.nePerson = nePerson;
         function nePerson() {
             /*vm.dataLoading = true;*/
             UserService.addNewPerson(vm)

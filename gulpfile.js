@@ -11,10 +11,14 @@ gulp.task('copy', function () {
         .pipe(gulp.dest('dist/'));
     gulp.src('app/service-worker.js')
         .pipe(gulp.dest('dist/'));
+    gulp.src('app/manifest.json')
+        .pipe(gulp.dest('dist/'));
     gulp.src('app/data/*.*')
         .pipe(gulp.dest('dist/data')),
         gulp.src('app/lib/fonts/*.*')
             .pipe(gulp.dest('dist/lib/fonts'));
+    gulp.src('app/images/*.*')
+        .pipe(gulp.dest('dist/images')),
     gulp.src('app/lib/styles/*.ttf')
         .pipe(gulp.dest('dist/lib/styles')),
         gulp.src('app/lib/styles/*.woff')
@@ -27,7 +31,7 @@ gulp.task('replace', function () {
             'css':'styles/app.css',
             'csslib': './lib/styles/app_lib.css',
             'js':'scripts/app.js',
-            'jslib': './lib/scripts/aap_lib.js',
+            'jslib': './lib/scripts/app_lib.js',
         }))
         .pipe(gulp.dest('dist/'));
 });
@@ -38,7 +42,7 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('dist/scripts/')),
         gulp.src('app/lib/scripts/**/*.js')
             .pipe(uglify())
-            .pipe(concatify('aap_lib.js'))
+            .pipe(concatify('app_lib.js'))
             .pipe(gulp.dest('dist/lib/scripts/'));
 });
 gulp.task('style', function () {

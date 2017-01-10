@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-
+    <link rel="manifest" href="manifest.json">
   </head>
   <body ng-app="bloodDonorFinderApp" ng-controller="MainCtrl as main" data-ng-init="init(map)">
   <nav class="navbar navbar-default " ng-controller="MenuCtrl">
@@ -60,7 +60,7 @@
     <script src="lib/scripts/3.angular-storage.js"></script>
     <script src="lib/scripts/idbp.js"></script>
     <script src="lib/scripts/firebase.js"></script>
-    <script src="lib/scripts/google-map-api.js"></script>
+   <!-- <script src="lib/scripts/google-map-api.js"></script>-->
     <script src="lib/scripts/ng-map.min.js"></script>
   <!-- endbuild -->
 
@@ -78,7 +78,7 @@
     <script src="scripts/directives/pwCheck.js"></script>
     <script src="scripts/directives/autofocus.js"></script>
   <!-- endbuild -->
-
+  <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyCqLqNiKPWhOKvuPc3mIXKhMJgT-99gS5A&sensor=false"></script>
   <script src="indexController.js"></script>
     <script>
       // Initialize Firebase
